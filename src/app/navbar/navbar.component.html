@@ -1,0 +1,7 @@
+<nav class="navbar box">
+    @for (item of items; track $index) {
+        <a class="navbar-item is-primary" [href]="item.href">
+            {{item.label}}
+        </a>
+    }
+</nav>

@@ -1,0 +1,28 @@
+:host{
+    position: fixed;
+    width: 90%;
+}
+
+
+.navbar {
+    margin-top: 1rem;
+    justify-content: space-evenly;
+    border-radius: var(--bulma-radius-rounded);
+    opacity: 0.5;
+    transition: opacity 0.3s;    
+
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+.navbar:hover {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.navbar-item {
+    border-radius: var(--bulma-radius-rounded);
+    color: var(--bulma-primary-invert)
+}
+.navbar-item:hover {
+    background-color: var(--bulma-primary);
+}
