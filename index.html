@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephane Roux</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nandaleio/shadcn-classless@main/dist/shadcn-classless.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <menu>
+          <li> <a href="#"> <button ghost eo-translator="menu.home"> Home </button> </a> </li>
+          <li> <a href="#workExperience"> <button ghost eo-translator="work.title"> Work Experience </button> </a> </li>
+          <li> <a href="#projects"> <button ghost eo-translator="projects.title"> Projects </button> </a> </li>
+          <li> <a href="#education"> <button ghost eo-translator="education.title"> Education </button> </a> </li>
+          <li> <a href="#skill"> <button ghost eo-translator="skill.title"> Skills </button> </a> </li>
+          <li> <button ghost onclick="changeLanguage()"> <i data-lucide="globe"></i> </button></li>
+          <li> <button ghost onclick="changeTheme()"> <i data-lucide="sun-moon"></i> </button></li>
+    </menu>
+
+    <section id="home">
+        <span class="title"><h2 eo-translator="about.title">About me</h2> <hr></span>
+
+        <p eo-translator="about.text" eo-translator-html="true">
+            Full-stack developer specializing in Java and Angular
+        </p>
+        
+    </section>
+
+    <section id="workExperience">
+        <span class="title"><h2 eo-translator="work.title">Work Experience</h2> <hr></span>
+
+        <article>
+            <header>
+                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
+                <small><b>Cronos</b> - [07/04/2025 - <span eo-translator="util.current">Current</span>]</small>
+            </header>
+            <ul eo-translator="work.textCronos" eo-translator-html="true">
+                <li>Diagnose and resolve software defects to enhance system stability and functionality.</li>
+                <li>Optimize application performance through code refinement and resource management.</li>
+                <li>Lead the migration from Solr to <b>Elasticsearch</b> to achieve improved search capabilities and system efficiency.</li>
+                <li>Drive the modernization of the application by implementing contemporary architectural and design patterns.</li>
+                <li>Utilize <b>Java 21</b> features to write clean, concise, and maintainable code, improving overall code quality.</li>
+            </ul>
+        </article>
+
+        <article >
+            <header>
+                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
+                <small><b>Brainbase / MyMediaBox</b> - [05/09/2022 - 05/07/2024]</small>
+            </header>
+            <ul eo-translator="work.textBrainbase" eo-translator-html="true">
+
+                <li>Leading the migration from <b>.NET 3.0 to .NET 8.0</b>, ensuring compatibility, security, and performance improvements.</li>
+                <li>Implementing Angular Guardsto restrict access and enhance security. Using FormValidators to enforce robust client-side validation.</li>
+                <li><b>Standalone Components</b> for better modularity, <b>signals</b> for efficient state management & <b>zoneless</b> performance optimizations to improve app responsiveness.</li>
+                <li>These responsibilities contribute to a modern, secure, and high-performance web applicationby integrating the latest technologies and best practices.</li>
+
+            </ul>
+        </article>
+
+        <article >
+            <header>
+                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
+                <small><b>Caceis</b> - [05/10/2020 - 05/06/2022]</small>
+            </header>
+            <ul eo-translator="work.textCaceis" eo-translator-html="true">
+
+                <li>Designing, developing, and improving the <b>Spring Boot</b> codebase to ensure scalability, maintainability, and performance.</li>
+                <li>Building an <b>ETL</b> (Extract, Transform, Load) pipeline using <b>Spring Integration</b> for efficient configuration file management and data processing.</li>
+                <li>Deploying the application on a <b>Tomcat WebServer</b>, ensuring smooth and reliable hosting.</li>
+
+            </ul>
+        </article>
+        
+    </section>
+
+    <section id="projects">
+        <span class="title"><h2 eo-translator="projects.title">About me</h2> <hr></span>
+
+        <ul eo-translator="projects.text" eo-translator-html="true">
+            
+        </ul>
+        
+    </section> 
+
+    <section id="education">
+        <span class="title"><h2 eo-translator="education.title">Education</h2> <hr></span>
+
+        <article >
+            <header>
+                <h3 eo-translator="education.master">IT Project Manager Master Degree</h3>
+                <small><b>Institut G4</b> - [01/09/2018 - 01/09/2020]</small>
+            </header>
+            <p eo-translator="education.textMaster" eo-translator-html="true">
+
+                Study all aspects of project management: financial administration, 
+                entrepreneurship, team management and agile methodology, as well as the technical 
+                side with software architecture and quality assurance as a final year project.
+
+            </p>
+        </article>
+
+        <article >
+            <header>
+                <h3 eo-translator="education.degree">SIL-NTI (New IT Technology) Professional degree</h3>
+                <small><b>Marseille St Charles University</b> - [04/09/2017 - 31/08/2018]</small>
+            </header>
+            <ul eo-translator="education.textDegree" eo-translator-html="true">
+
+
+                <li>General software and web development course.</li>
+                <li>Building application in Java using Design patterns.</li>
+                <li>Connecting Frontend to Backend to Database to create full stack application and deploy it on Linux servers</li>
+
+
+            </ul>
+        </article>
+
+        
+    </section>
+
+
+    <section id="skill">
+        <span class="title"><h2 eo-translator="skill.title">Skills</h2> <hr></span>
+
+        <p>
+            <kbd outline>Angular</kbd>
+            <kbd>Spring Boot</kbd>
+            <kbd>Java</kbd>
+            <kbd outline>Vue</kbd>
+            <kbd outline>HTML</kbd>
+            <kbd outline>CSS</kbd>
+            <kbd outline>Typescript</kbd>
+            <kbd secondary>Git</kbd>
+            <kbd secondary>CI/CD</kbd>
+            <kbd secondary>Postgresql</kbd>
+            
+        </p>
+        
+    </section>
+
+    <hr>
+
+    <small eo-translator="util.footer" eo-translator-html="true">Made with ❤️</small>
+
+    
+    <script src="translator.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="dictionary.js"></script>
+    <script defer src="script.js"></script>
+</body>
+</html>
