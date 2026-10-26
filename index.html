@@ -1,156 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephane Roux</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nandaleio/shadcn-classless@main/dist/shadcn-classless.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stephane Roux – Full Stack Developer</title>
+  <meta name="description"
+    content="Portfolio of Stephane Roux, full stack developer (Angular, Spring Boot, Elasticsearch) at the European Parliament in Luxembourg. Explore my experience and education on an interactive globe.">
+  <meta name="author" content="Stephane Roux">
+  <meta name="theme-color" content="#3b82f6">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Stephane Roux – Full Stack Developer">
+  <meta property="og:description"
+    content="Full stack developer (Angular, Spring Boot, Elasticsearch). Explore my experience and education on an interactive globe.">
+  <meta property="profile:first_name" content="Stephane">
+  <meta property="profile:last_name" content="Roux">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Lets search engines read the resume, which the page itself only builds with JavaScript -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Stephane Roux",
+      "jobTitle": "Full Stack Developer",
+      "worksFor": { "@type": "GovernmentOrganization", "name": "European Parliament" },
+      "workLocation": { "@type": "Place", "name": "Luxembourg" },
+      "alumniOf": [
+        { "@type": "EducationalOrganization", "name": "Institut G4" },
+        { "@type": "CollegeOrUniversity", "name": "Marseille St Charles University" }
+      ],
+      "knowsAbout": ["Angular", "Spring Boot", "Spring Integration", "Elasticsearch", "Java", "Full stack development", "IT project management"],
+      "knowsLanguage": ["en", "fr"]
+    }
+  </script>
 </head>
+
 <body>
-    <canvas id="particles-bg"></canvas>
+  <!-- Icons from Bootstrap Icons v1.13.1 (MIT), inlined so the page needs no icon font -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <symbol id="bi-list-ul" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+    </symbol>
+    <symbol id="bi-chevron-down" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+    </symbol>
+    <symbol id="bi-moon" viewBox="0 0 16 16">
+      <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+    </symbol>
+    <symbol id="bi-sun" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+    </symbol>
+    <symbol id="bi-x-lg" viewBox="0 0 16 16">
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+    </symbol>
+  </svg>
 
-    <menu>
-          <li> <a href="#"> <button ghost eo-translator="menu.home"> Home </button> </a> </li>
-          <li> <a href="#workExperience"> <button ghost eo-translator="work.title"> Work Experience </button> </a> </li>
-          <li> <a href="#projects"> <button ghost eo-translator="projects.title"> Projects </button> </a> </li>
-          <li> <a href="#education"> <button ghost eo-translator="education.title"> Education </button> </a> </li>
-          <li> <a href="#skill"> <button ghost eo-translator="skill.title"> Skills </button> </a> </li>
-          <li> <button ghost onclick="changeLanguage()"> <i data-lucide="globe"></i> </button></li>
-          <li> <button ghost onclick="changeTheme()"> <i data-lucide="sun-moon"></i> </button></li>
-    </menu>
+  <main id="globe">
+    <header>
+      <div>
+        <h1><span eo-translator="header.greeting">Hello, I'm</span> <span class="accent">Stephane Roux</span></h1>
+        <p eo-translator="header.welcome">Welcome to my portfolio.</p>
+      </div>
 
-    <section id="home">
-        <span class="title"><h2 eo-translator="about.title">About me</h2> <hr></span>
+      <div class="controls">
+        <button id="list-toggle" class="icon-button" aria-expanded="false" aria-controls="drawer"
+          aria-label="Experience list" data-label-key="controls.list">
+          <svg class="bi" aria-hidden="true"><use href="#bi-list-ul"/></svg>
+        </button>
+        <div class="lang-select">
+          <button id="lang-button" class="lang-button" aria-haspopup="listbox" aria-expanded="false"
+            aria-controls="lang-menu" aria-label="Language" data-label-key="controls.language">
+            <span class="flag fi fi-gb" aria-hidden="true"></span>
+            <svg class="bi chevron" aria-hidden="true"><use href="#bi-chevron-down"/></svg>
+          </button>
+          <ul id="lang-menu" class="lang-menu" role="listbox" hidden>
+            <li role="option" data-lang="en" tabindex="-1" aria-selected="true">
+              <span class="flag fi fi-gb" aria-hidden="true"></span> English
+            </li>
+            <li role="option" data-lang="fr" tabindex="-1" aria-selected="false">
+              <span class="flag fi fi-fr" aria-hidden="true"></span> Français
+            </li>
+            <li role="option" data-lang="ar" tabindex="-1" aria-selected="false">
+              <span class="flag fi fi-arab" aria-hidden="true"></span> <span lang="ar" dir="rtl">العربية</span>
+            </li>
+            <li role="option" data-lang="zh" tabindex="-1" aria-selected="false">
+              <span class="flag fi fi-cn" aria-hidden="true"></span> <span lang="zh">中文</span>
+            </li>
+          </ul>
+        </div>
+        <button id="theme-toggle" class="icon-button" aria-label="Toggle theme" data-label-key="controls.theme">
+          <svg class="bi icon-moon" aria-hidden="true"><use href="#bi-moon"/></svg>
+          <svg class="bi icon-sun" aria-hidden="true"><use href="#bi-sun"/></svg>
+        </button>
+      </div>
+    </header>
+  </main>
 
-        <p eo-translator="about.text" eo-translator-html="true">
-            Full-stack developer specializing in Java and Angular
-        </p>
-        
-    </section>
-
-    <section id="workExperience">
-        <span class="title"><h2 eo-translator="work.title">Work Experience</h2> <hr></span>
-
-        <article>
-            <header>
-                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
-                <small><b>Cronos</b> - [07/04/2025 - <span eo-translator="util.current">Current</span>]</small>
-            </header>
-            <ul eo-translator="work.textCronos" eo-translator-html="true">
-                <li>Diagnose and resolve software defects to enhance system stability and functionality.</li>
-                <li>Optimize application performance through code refinement and resource management.</li>
-                <li>Lead the migration from Solr to <b>Elasticsearch</b> to achieve improved search capabilities and system efficiency.</li>
-                <li>Drive the modernization of the application by implementing contemporary architectural and design patterns.</li>
-                <li>Utilize <b>Java 21</b> features to write clean, concise, and maintainable code, improving overall code quality.</li>
-            </ul>
-        </article>
-
-        <article >
-            <header>
-                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
-                <small><b>Brainbase / MyMediaBox</b> - [05/09/2022 - 05/07/2024]</small>
-            </header>
-            <ul eo-translator="work.textBrainbase" eo-translator-html="true">
-
-                <li>Leading the migration from <b>.NET 3.0 to .NET 8.0</b>, ensuring compatibility, security, and performance improvements.</li>
-                <li>Implementing Angular Guardsto restrict access and enhance security. Using FormValidators to enforce robust client-side validation.</li>
-                <li><b>Standalone Components</b> for better modularity, <b>signals</b> for efficient state management & <b>zoneless</b> performance optimizations to improve app responsiveness.</li>
-                <li>These responsibilities contribute to a modern, secure, and high-performance web applicationby integrating the latest technologies and best practices.</li>
-
-            </ul>
-        </article>
-
-        <article >
-            <header>
-                <h3 eo-translator="util.fullstack">Full-stack developer</h3>
-                <small><b>Caceis</b> - [05/10/2020 - 05/06/2022]</small>
-            </header>
-            <ul eo-translator="work.textCaceis" eo-translator-html="true">
-
-                <li>Designing, developing, and improving the <b>Spring Boot</b> codebase to ensure scalability, maintainability, and performance.</li>
-                <li>Building an <b>ETL</b> (Extract, Transform, Load) pipeline using <b>Spring Integration</b> for efficient configuration file management and data processing.</li>
-                <li>Deploying the application on a <b>Tomcat WebServer</b>, ensuring smooth and reliable hosting.</li>
-
-            </ul>
-        </article>
-        
-    </section>
-
-    <section id="projects">
-        <span class="title"><h2 eo-translator="projects.title">About me</h2> <hr></span>
-
-        <ul eo-translator="projects.text" eo-translator-html="true">
-            
-        </ul>
-        
-    </section> 
-
-    <section id="education">
-        <span class="title"><h2 eo-translator="education.title">Education</h2> <hr></span>
-
-        <article >
-            <header>
-                <h3 eo-translator="education.master">IT Project Manager Master Degree</h3>
-                <small><b>Institut G4</b> - [01/09/2018 - 01/09/2020]</small>
-            </header>
-            <p eo-translator="education.textMaster" eo-translator-html="true">
-
-                Study all aspects of project management: financial administration, 
-                entrepreneurship, team management and agile methodology, as well as the technical 
-                side with software architecture and quality assurance as a final year project.
-
-            </p>
-        </article>
-
-        <article >
-            <header>
-                <h3 eo-translator="education.degree">SIL-NTI (New IT Technology) Professional degree</h3>
-                <small><b>Marseille St Charles University</b> - [04/09/2017 - 31/08/2018]</small>
-            </header>
-            <ul eo-translator="education.textDegree" eo-translator-html="true">
-
-
-                <li>General software and web development course.</li>
-                <li>Building application in Java using Design patterns.</li>
-                <li>Connecting Frontend to Backend to Database to create full stack application and deploy it on Linux servers</li>
-
-
-            </ul>
-        </article>
-
-        
-    </section>
-
-
-    <section id="skill">
-        <span class="title"><h2 eo-translator="skill.title">Skills</h2> <hr></span>
-
-        <p>
-            <kbd outline>Angular</kbd>
-            <kbd>Spring Boot</kbd>
-            <kbd>Java</kbd>
-            <kbd outline>Vue</kbd>
-            <kbd outline>HTML</kbd>
-            <kbd outline>CSS</kbd>
-            <kbd outline>Typescript</kbd>
-            <kbd secondary>Git</kbd>
-            <kbd secondary>CI/CD</kbd>
-            <kbd secondary>Postgresql</kbd>
-            
-        </p>
-        
-    </section>
-
-    <hr>
-
-    <small eo-translator="util.footer" eo-translator-html="true">Made with ❤️</small>
-
-    
-    <script src="particles.js"></script>
-    <script src="translator.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="dictionary.js"></script>
-    <script defer src="script.js"></script>
+  <script src="vendor/d3/dist/d3-globe.min.js"></script>
+  <script src="vendor/topojson-client/dist/topojson-client.min.js"></script>
+  <script src="vendor/eo-translatorjs/dist/eo-translatorjs.min.js"></script>
+  <script src="vendor/world-atlas/countries-110m.js"></script>
+  <!-- Plain scripts rather than ES modules so the page also works when opened straight from disk -->
+  <script src="js/translations.js"></script>
+  <script src="js/places.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/lang-menu.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/resume.js"></script>
+  <script src="js/popover.js"></script>
+  <script src="js/drawer.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>

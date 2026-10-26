@@ -1,63 +1,422 @@
-#particles-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+:root {
+  --drawer-width: min(34rem, 90vw);
+  --bg: #fafafa;
+  --text: #222;
+  --accent: #3b82f6;
 }
 
 body {
-
-    margin: 0;
-    width: 100vw;
-    max-width: none;
-    overflow-x: hidden;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 2rem;
-
-
-    menu {
-        position: sticky;
-        top: 1rem;
-
-        background-color: var(--background);
-    }
-
-
-    section {
-
-    
-        width: 50%;
-
-        a {
-            text-decoration: underline;
-        }
-
-        article {
-            background-color: var(--background);
-        }
-
-        span.title {
-            display: flex;
-            align-items: center;
-
-            h2 {
-                margin-right: 1rem;
-            }
-
-            hr {
-                flex-grow: 1;
-            }
-        }
-    }
-
+  overflow: hidden;
 }
 
-html {
-        scroll-behavior: smooth;
+body.dark {
+  --bg: #1a1a1a;
+  --text: #eee;
+  --accent: #60a5fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Inline Bootstrap Icons (the sprite in index.html), sized and aligned like the icon font */
+.bi {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: currentColor;
+  vertical-align: -0.125em;
+}
+
+/* The flag-icons flags as background images, only the four languages on offer; this keeps them all the same 3:2 size */
+.fi {
+  display: inline-block;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.fi-gb {
+  background-image: url(vendor/flag-icons/flags/4x3/gb.svg);
+}
+
+.fi-fr {
+  background-image: url(vendor/flag-icons/flags/4x3/fr.svg);
+}
+
+.fi-arab {
+  background-image: url(vendor/flag-icons/flags/4x3/arab.svg);
+}
+
+.fi-cn {
+  background-image: url(vendor/flag-icons/flags/4x3/cn.svg);
+}
+
+.flag {
+  width: 1.5rem;
+  height: 1rem;
+  flex: none;
+  background-size: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--text) 20%, transparent);
+}
+
+.lang-select {
+  position: relative;
+}
+
+.lang-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 1.25rem;
+
+  .chevron {
+    font-size: 0.8rem;
+  }
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  inset-inline-end: 0;
+  z-index: 20;
+  min-width: 9rem;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+  border-radius: 8px;
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: start;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  li:hover,
+  li:focus-visible {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+
+  li[aria-selected="true"] {
+    font-weight: 600;
+    color: var(--accent);
+  }
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.15rem;
+}
+
+/* Shows the theme you would switch to */
+.icon-sun,
+body.dark .icon-moon {
+  display: none;
+}
+
+body.dark .icon-sun {
+  display: block;
+}
+
+#globe {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  transition: margin 0.3s ease;
+}
+
+/* The open drawer pushes the globe section aside, where there is room left for it; phones keep it as an overlay */
+@media (min-width: 48rem) {
+  body.drawer-open #globe {
+    margin-inline-end: var(--drawer-width);
+  }
+}
+
+/* Sits above the globe; only the controls catch the mouse so you can drag and zoom through the text */
+#globe header {
+  position: relative;
+  z-index: 11;
+  padding: 1.5rem 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+
+  /* Halo keeps the text readable when the zoomed globe passes behind it */
+  p {
+    text-align: start;
+  }
+
+  h1,
+  p {
+    text-shadow: 0 0 3px var(--bg), 0 0 6px var(--bg), 0 0 10px var(--bg);
+  }
+
+  .controls {
+    pointer-events: auto;
+  }
+
+  /* Same halo for the buttons, so the blue buttons stand out from the blue land */
+  .lang-button,
+  .icon-button {
+    box-shadow: 0 0 3px var(--bg), 0 0 6px var(--bg), 0 0 10px var(--bg);
+  }
+}
+
+/* Covers the whole section so the zoomed globe can grow behind the header; js/globe.js sizes it in pixels */
+#globe>svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.ocean {
+  fill: var(--accent);
+  opacity: 0.15;
+}
+
+.graticule {
+  fill: none;
+  stroke: var(--text);
+  stroke-opacity: 0.1;
+}
+
+.land {
+  fill: var(--accent);
+}
+
+.borders {
+  fill: none;
+  stroke: var(--bg);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}
+
+/* Ties a marker that was pushed aside to its real location */
+.leader {
+  pointer-events: none;
+
+  line {
+    stroke: var(--text);
+    stroke-opacity: 0.6;
+    stroke-width: 1.5;
+  }
+
+  circle {
+    fill: #f97316;
+    stroke: var(--bg);
+    stroke-width: 1;
+  }
+}
+
+.marker {
+  fill: #f97316;
+  stroke: var(--bg);
+  stroke-width: 2;
+  cursor: pointer;
+  outline: none;
+}
+
+.marker:hover,
+.marker:focus-visible,
+.marker.active {
+  fill: #ea580c;
+  stroke: var(--text);
+}
+
+/* Resume entries of one place, in the popover and in each drawer section (js/resume.js) */
+.resume {
+  text-align: start;
+  font-size: 0.9rem;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  h3 {
+    margin: 0.75rem 0 0.1rem;
+    font-size: 1rem;
+  }
+
+  .meta {
+    margin: 0 0 0.4rem;
+    opacity: 0.7;
+  }
+
+  ul {
+    margin: 0;
+    padding-inline-start: 1.2rem;
+  }
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+}
+
+#popover {
+  position: absolute;
+  z-index: 10;
+  width: min(340px, calc(100vw - 16px));
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* Leaves room for the close button */
+  h2 {
+    margin-inline-end: 1.5rem;
+  }
+
+  .close {
+    position: absolute;
+    top: 0.5rem;
+    inset-inline-end: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    background: transparent;
+    color: var(--text);
+  }
+}
+
+/* Slides in from the end side: the right, or the left for right-to-left languages (js/drawer.js) */
+#drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: var(--drawer-width);
+  border-inline-start: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+  translate: 100% 0;
+  transition: translate 0.3s ease, background 0.3s, color 0.3s;
+
+  &.open {
+    translate: 0 0;
+  }
+
+  /* The display above would otherwise beat the hidden attribute and keep the closed drawer's shadow on screen */
+  &[hidden] {
+    display: none;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  .close {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    background: transparent;
+    color: var(--text);
+  }
+
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem 1.25rem 1.5rem;
+  }
+
+  section {
+    padding: 1rem 0 1rem 0;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  section + section {
+    border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  }
+
+  section.current {
+    border-inline-start-color: var(--accent);
+  }
+}
+
+[dir="rtl"] #drawer:not(.open) {
+  translate: -100% 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Not 'none', which would skip the transitionend that hides the closed drawer */
+  #drawer,
+  #globe {
+    transition-duration: 0.01ms;
+  }
 }
